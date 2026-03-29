@@ -90,7 +90,7 @@ resultat_ex3 = 15
 mot = donnees["ex4"]["mot"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex4 = None
+resultat_ex4 = 13
 
 
 # ========================================================
