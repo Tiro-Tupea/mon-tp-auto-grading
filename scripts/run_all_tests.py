@@ -1,6 +1,6 @@
 """
 run_all_tests.py - Lance les tests pytest pour tous les élèves
-Version simplifiée et fonctionnelle
+Version 3 - VRAIMENT fonctionnelle
 """
 
 import os
@@ -22,6 +22,10 @@ def run_tests():
         print("❌ Dossier 'eleves' introuvable")
         return False
     
+    if not tests_dir.exists():
+        print("❌ Dossier 'tests' introuvable")
+        return False
+    
     total_passed = 0
     total_failed = 0
     
@@ -38,7 +42,6 @@ def run_tests():
         
         for tp_file in tp_files:
             tp_name = tp_file.stem  # tp3, tp4, etc.
-            tp_num = tp_name.replace('tp', '')
             
             # Chercher le fichier de test correspondant
             test_file = tests_dir / f"test_{tp_name}.py"
@@ -50,29 +53,56 @@ def run_tests():
             print(f"  📝 {tp_name}...", end=" ", flush=True)
             
             try:
-                # Lancer pytest directement
+                # Créer un fichier tp.py dans le dossier élève pour que pytest le trouve
+                tp_link = student_dir / "tp.py"
+                
+                # Copier ou linker le fichier
+                with open(tp_file, 'r') as src:
+                    with open(tp_link, 'w') as dst:
+                        dst.write(src.read())
+                
+                # Lancer pytest DEPUIS LE RÉPERTOIRE RACINE
                 result = subprocess.run(
-                    [sys.executable, "-m", "pytest", str(test_file), "-v", "--tb=no", "-q"],
+                    [sys.executable, "-m", "pytest", str(test_file), "-v", "--tb=short"],
                     capture_output=True,
                     text=True,
-                    cwd=str(student_dir),
-                    timeout=30
+                    cwd=".",  # ← Depuis le répertoire racine
+                    timeout=30,
+                    env={**os.environ, "PYTHONPATH": str(student_dir)}
                 )
                 
                 # Parser les résultats
                 output = result.stdout + result.stderr
                 
                 # Compter les tests passés/échoués
-                passed = output.count(" PASSED")
-                failed = output.count(" FAILED")
-                
-                total_passed += passed
-                total_failed += failed
-                
-                if result.returncode == 0:
-                    print(f"✓ ({passed} tests)")
+                if "passed" in output:
+                    # Chercher le résumé final
+                    lines = output.split('\n')
+                    for line in lines:
+                        if "passed" in line or "failed" in line:
+                            # Extraire les nombres
+                            import re
+                            passed_match = re.search(r'(\d+)\s+passed', line)
+                            failed_match = re.search(r'(\d+)\s+failed', line)
+                            
+                            passed = int(passed_match.group(1)) if passed_match else 0
+                            failed = int(failed_match.group(1)) if failed_match else 0
+                            
+                            if passed + failed > 0:
+                                total_passed += passed
+                                total_failed += failed
+                                
+                                if failed == 0:
+                                    print(f"✓ ({passed} tests)")
+                                else:
+                                    print(f"⚠️  ({passed}/{passed+failed} tests)")
+                                break
                 else:
-                    print(f"⚠️  ({passed}/{passed+failed} tests)")
+                    print(f"✗ (erreur)")
+                
+                # Nettoyer le fichier temporaire
+                if tp_link.exists():
+                    tp_link.unlink()
                     
             except subprocess.TimeoutExpired:
                 print("✗ (timeout)")
