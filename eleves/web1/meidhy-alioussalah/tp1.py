@@ -129,12 +129,13 @@ num2 = donnees["ex14_num2"]
 # - "soustraction": résultat soustraction
 # - "multiplication": résultat multiplication
 # - "division": résultat division
-resultat_ex14 = {
+dictionnaire = {
     "addition": num1 + num2,
     "soustraction": num1 - num2,
     "multiplication": num1 * num2, 
     "division": num1 / num2
 }
+resultat_ex14 = dictionnaire
 
 # EXERCICE 15 : Écrire un commentaire
 # Ce programme démontre les opérations de base en Python
