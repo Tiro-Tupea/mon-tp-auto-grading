@@ -373,4 +373,3 @@ Ce projet est sous licence MIT.
 ---
 
 **Bon travail ! 🚀**
-test
