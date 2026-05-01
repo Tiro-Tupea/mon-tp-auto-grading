@@ -28,53 +28,99 @@ donnees = {
 
 # EXERCICE 1 : Parcourir une chaîne
 # Créez une liste avec chaque caractère du mot "algorithmique"
+
 mot = donnees["ex1_mot"]
-resultat_ex1 = None
+mot = donnees["ex1_mot"]
+resultat_ex1 = []
+for l in mot :
+    resultat_ex1.append(l)
+
 
 
 # EXERCICE 2 : Compter une lettre
+
 mot = donnees["ex2_mot"]
 lettre = donnees["ex2_lettre"]
 # Comptez combien de fois la lettre "a" apparaît
-resultat_ex2 = None
+compteur = 0 
+for l in mot: 
+    if l == lettre: 
+        compteur += 1
+resultat_ex2 = compteur
 
 
 # EXERCICE 3 : Compter les voyelles
 mot = donnees["ex3_mot"]
 # Comptez les voyelles (a, e, i, o, u, y)
-resultat_ex3 = None
+
+voyelles = "aieouy"
+compteur = 0 
+for l in mot: 
+    for v in voyelles:
+        if l == v:
+            compteur += 1
+resultat_ex3 = compteur
 
 
 # EXERCICE 4 : Inverser une chaîne
 mot = donnees["ex4_mot"]
 # Affichez le mot à l'envers : "hello" → "olleh"
-resultat_ex4 = None
+
+resultat_ex4 = ""
+i = 0 
+while i < len(mot):
+    i += 1 
+    resultat_ex4 += mot[len(mot) - i]
 
 
 # EXERCICE 5 : Vérifier un palindrome
 mot = donnees["ex5_mot"]
 # Vérifiez si le mot se lit pareil dans les deux sens
 # "radar" → True
-resultat_ex5 = None
+
+inverse = ""
+i = 0 
+while i < len(mot):
+    i += 1
+    inverse += mot[len(mot) - i] 
+
+resultat_ex5 = (mot == inverse)
 
 
 # EXERCICE 6 : Compter les mots
 phrase = donnees["ex6_phrase"]
 # Comptez combien de mots la phrase contient (sans utiliser split)
-resultat_ex6 = None
 
+compteur = 0
+dans_mot = False
+for l in phrase:
+    if l != " " and not dans_mot:
+        dans_mot = True
+        compteur += 1
+    elif l == " ": 
+        dans_mot = False
 
 # EXERCICE 7 : Supprimer les espaces en début et fin
 phrase = donnees["ex7_phrase"]
 # Retournez la phrase sans espaces au début et fin
-resultat_ex7 = None
 
+debut = 0 
+fin = len(phrase) - 1
+while debut <= fin and phrase[debut] == " ":
+    debut += 1
+while fin >= debut and phrase[fin] == " ":
+    fin -= 1
+resultat_ex7 = ""
+i = debut
+while i <= fin : 
+    resultat_ex7 += phrase[i]
+    i += 1
 
 # EXERCICE 8 : Trouver le mot le plus long
 phrase = donnees["ex8_phrase"]
 # Retournez le mot le plus long de la phrase (sans utiliser split)
-resultat_ex8 = None
 
+resultat_ex8 = None
 
 # EXERCICE 9 : Supprimer les espaces multiples
 phrase = donnees["ex9_phrase"]
