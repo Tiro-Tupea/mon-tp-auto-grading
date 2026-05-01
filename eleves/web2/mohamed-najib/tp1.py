@@ -31,7 +31,7 @@ donnees = {
 
 # EXERCICE 1 : Afficher un message
 # Affichez : "Bienvenue dans la formation Python !"
-resultat_ex1 = None
+resultat_ex1 = "Bienvenue dans la formation Python !"
 
 
 # EXERCICE 2 : Afficher plusieurs lignes
@@ -39,7 +39,7 @@ resultat_ex1 = None
 # Bonjour !
 # Bienvenue dans le monde de la programmation Python.
 # Amusez-vous bien !
-resultat_ex2 = None
+resultat_ex2 = "Bonjour !\nBienvenue dans le monde de la programmation Python.\nAmusez-vous bien !"
 
 
 # EXERCICE 3 : Addition simple
@@ -47,14 +47,14 @@ resultat_ex2 = None
 a = donnees["ex3_a"]
 b = donnees["ex3_b"]
 # Calculez la somme
-resultat_ex3 = None
+resultat_ex3 = a + b
 
 
 # EXERCICE 4 : Créer et afficher une variable
 # Créez une variable nom et mettez-y "Alice"
 # Affichez : "Bonjour, Alice !"
 nom = "Alice"
-resultat_ex4 = None
+resultat_ex4 = "Bonjour, " + nom + " !"
 
 
 # EXERCICE 5 : Concaténation de chaînes
@@ -62,64 +62,64 @@ resultat_ex4 = None
 prenom = donnees["ex5_prenom"]
 nom = donnees["ex5_nom"]
 # Créez le message : "Bonjour, [prénom] [nom] !"
-resultat_ex5 = None
+resultat_ex5 = "Bonjour, " + prenom + " " + nom + " !"
 
 
 # EXERCICE 6 : Multiplier des nombres
 x = donnees["ex6_x"]
 y = donnees["ex6_y"]
 # Calculez le produit
-resultat_ex6 = None
+resultat_ex6 = x * y
 
 
 # EXERCICE 7 : Division avec résultat flottant
 a = donnees["ex7_a"]
 b = donnees["ex7_b"]
 # Divisez a par b
-resultat_ex7 = None
+resultat_ex7 = a / b
 
 
 # EXERCICE 8 : Calculer le reste d'une division
 dividende = donnees["ex8_dividende"]
 diviseur = donnees["ex8_diviseur"]
 # Calculez le reste (modulo)
-resultat_ex8 = None
+resultat_ex8 = dividende % diviseur
 
 
 # EXERCICE 9 : Conversion de types
 # Age en tant que chaîne
 age_str = donnees["ex9_age"]
 # Convertissez en entier
-age_int = None
+age_int = int(age_str)
 # Créez le message : "Vous avez [âge] ans."
-resultat_ex9 = None
+resultat_ex9 = "Vous avez " + str(age_int) + " ans."
 
 
 # EXERCICE 10 : Afficher le type d'une variable
 valeur = donnees["ex10_valeur"]
 # Utilisez type() pour obtenir le type
-type_valeur = None
+type_valeur = type(valeur)
 # Créez un message : "Valeur: 3.14, Type: <class 'float'>"
-resultat_ex10 = None
+resultat_ex10 = "Valeur: " + str(valeur) + ", Type: " + str(type_valeur)
 
 
 # EXERCICE 11 : Manipuler une chaîne
 texte = donnees["ex11_texte"]
 # Transformez en majuscules
-resultat_ex11 = None
+resultat_ex11 = texte.upper()
 
 
 # EXERCICE 12 : Longueur d'une chaîne
 phrase = donnees["ex12_phrase"]
 # Calculez la longueur
-resultat_ex12 = None
+resultat_ex12 = len(phrase)
 
 
 # EXERCICE 13 : Convertir des Celsius en Fahrenheit
 # Formule : F = (9/5) * C + 32
 celsius = donnees["ex13_celsius"]
 # Calculez en Fahrenheit
-resultat_ex13 = None
+resultat_ex13 = (9 / 5) * celsius + 32
 
 
 # EXERCICE 14 : Opérations arithmétiques
@@ -130,7 +130,12 @@ num2 = donnees["ex14_num2"]
 # - "soustraction": résultat soustraction
 # - "multiplication": résultat multiplication
 # - "division": résultat division
-resultat_ex14 = None
+resultat_ex14 = {
+    "addition": num1 + num2,
+    "soustraction": num1 - num2,
+    "multiplication": num1 * num2,
+    "division": num1 / num2,
+}
 
 
 # EXERCICE 15 : Écrire un commentaire
@@ -140,4 +145,4 @@ a = 5
 b = 3
 c = 2
 # Résultat de (a + b) * c
-resultat_ex15 = None
+resultat_ex15 = (a + b) * c

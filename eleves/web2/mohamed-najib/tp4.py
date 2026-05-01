@@ -39,7 +39,11 @@ donnees = {
 N = donnees["ex1"]["N"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex1 = None
+resultat_ex1 = []
+compteur = 1
+while compteur <= N:
+    resultat_ex1.append(compteur)
+    compteur += 1
 
 
 # ========================================================
@@ -56,7 +60,11 @@ resultat_ex1 = None
 N = donnees["ex2"]["N"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex2 = None
+resultat_ex2 = []
+compteur = N
+while compteur >= 0:
+    resultat_ex2.append(compteur)
+    compteur -= 1
 
 
 # ========================================================
@@ -74,7 +82,11 @@ resultat_ex2 = None
 N = donnees["ex3"]["N"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex3 = None
+resultat_ex3 = 0
+compteur = 1
+while compteur <= N:
+    resultat_ex3 += compteur
+    compteur += 1
 
 
 # ========================================================
@@ -91,7 +103,11 @@ resultat_ex3 = None
 mot = donnees["ex4"]["mot"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex4 = None
+resultat_ex4 = 0
+index = 0
+while index < len(mot):
+    resultat_ex4 += 1
+    index += 1
 
 
 # ========================================================
@@ -111,7 +127,15 @@ resultat_ex4 = None
 propositions = donnees["ex5"]["propositions"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex5 = None
+resultat_ex5 = {"valeur": None, "essais": 0}
+index = 0
+while index < len(propositions):
+    proposition = propositions[index]
+    resultat_ex5["essais"] += 1
+    if 1 <= proposition <= 10:
+        resultat_ex5["valeur"] = proposition
+        break
+    index += 1
 
 
 # ========================================================
@@ -129,7 +153,13 @@ mot = donnees["ex6"]["mot"]
 caractere = donnees["ex6"]["caractere"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex6 = None
+resultat_ex6 = "Absent"
+index = 0
+while index < len(mot):
+    if mot[index] == caractere:
+        resultat_ex6 = "Présent"
+        break
+    index += 1
 
 
 # ========================================================
@@ -148,7 +178,13 @@ mot = donnees["ex7"]["mot"]
 caractere = donnees["ex7"]["caractere"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex7 = None
+resultat_ex7 = -1
+index = 0
+while index < len(mot):
+    if mot[index] == caractere:
+        resultat_ex7 = index
+        break
+    index += 1
 
 
 # ========================================================
@@ -166,7 +202,13 @@ resultat_ex7 = None
 chaine = donnees["ex8"]["chaine"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex8 = None
+resultat_ex8 = 0
+index = 0
+while index < len(chaine):
+    code_caractere = ord(chaine[index])
+    if 48 <= code_caractere <= 57:
+        resultat_ex8 += 1
+    index += 1
 
 
 # ========================================================
@@ -184,7 +226,11 @@ resultat_ex8 = None
 nombre = donnees["ex9"]["nombre"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex9 = None
+resultat_ex9 = 0
+temp = nombre
+while temp > 0:
+    resultat_ex9 += temp % 10
+    temp //= 10
 
 
 # ========================================================
@@ -203,7 +249,11 @@ resultat_ex9 = None
 nombre = donnees["ex10"]["nombre"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex10 = None
+resultat_ex10 = 0
+temp = nombre
+while temp > 0:
+    resultat_ex10 = resultat_ex10 * 10 + (temp % 10)
+    temp //= 10
 
 
 # ========================================================
@@ -221,7 +271,16 @@ resultat_ex10 = None
 nombre = donnees["ex11"]["nombre"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex11 = None
+if nombre <= 1:
+    resultat_ex11 = False
+else:
+    resultat_ex11 = True
+    testeur = 2
+    while testeur < nombre:
+        if nombre % testeur == 0:
+            resultat_ex11 = False
+            break
+        testeur += 1
 
 
 # ========================================================
@@ -243,7 +302,11 @@ resultat_ex11 = None
 N = donnees["ex12"]["N"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex12 = None
+resultat_ex12 = []
+compteur = 1
+while compteur <= 10:
+    resultat_ex12.append(str(N) + " x " + str(compteur) + " = " + str(N * compteur))
+    compteur += 1
 
 
 # ========================================================
@@ -264,7 +327,13 @@ cible = donnees["ex13"]["cible"]
 propositions = donnees["ex13"]["propositions"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex13 = None
+resultat_ex13 = 0
+index = 0
+while index < len(propositions):
+    resultat_ex13 += 1
+    if propositions[index] == cible:
+        break
+    index += 1
 
 
 # ========================================================
@@ -283,7 +352,11 @@ resultat_ex13 = None
 N = donnees["ex14"]["N"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex14 = None
+resultat_ex14 = 1
+compteur = 1
+while compteur <= N:
+    resultat_ex14 *= compteur
+    compteur += 1
 
 
 # ========================================================
@@ -312,7 +385,31 @@ resultat_ex14 = None
 notes_liste = donnees["ex15"]["notes"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex15 = None
+compte_notes = 0
+somme_notes = 0
+note_max = None
+note_min = None
+index = 0
+while index < len(notes_liste) and notes_liste[index] != -1:
+    note = notes_liste[index]
+    if 0 <= note <= 20:
+        compte_notes += 1
+        somme_notes += note
+        if note_max is None or note > note_max:
+            note_max = note
+        if note_min is None or note < note_min:
+            note_min = note
+    index += 1
+if compte_notes > 0:
+    moyenne = round(somme_notes / compte_notes, 2)
+else:
+    moyenne = 0.0
+resultat_ex15 = {
+    "nombre": compte_notes,
+    "moyenne": moyenne,
+    "max": note_max,
+    "min": note_min,
+}
 
 
 # ========================================================
