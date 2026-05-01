@@ -39,7 +39,12 @@ donnees = {
 N = donnees["ex1"]["N"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex1 = None
+
+resultat_ex1 = []
+i = 1 
+while i <= N:
+    resultat_ex1.append(i)
+    i += 1
 
 
 # ========================================================
@@ -56,8 +61,12 @@ resultat_ex1 = None
 N = donnees["ex2"]["N"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex2 = None
 
+resultat_ex2 = []
+i = N 
+while i >= 0:
+    resultat_ex2.append(i)
+    i -= 1
 
 # ========================================================
 # EXERCICE 3 : Somme de 1 à N
@@ -74,7 +83,13 @@ resultat_ex2 = None
 N = donnees["ex3"]["N"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex3 = None
+
+somme = 0
+i = 1 
+while i <= N: 
+    somme += i 
+    i += 1
+resultat_ex3 = somme
 
 
 # ========================================================
@@ -91,7 +106,11 @@ resultat_ex3 = None
 mot = donnees["ex4"]["mot"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex4 = None
+
+compteur = 0 
+for c in mot: 
+    compteur += 1
+resultat_ex4 = compteur
 
 
 # ========================================================
@@ -166,7 +185,15 @@ resultat_ex7 = None
 chaine = donnees["ex8"]["chaine"]
 
 # [ÉCRIVEZ VOTRE CODE ICI]
-resultat_ex8 = None
+
+compteur = 0 
+i = 0 
+while i < len(chaine): 
+    if 48 <= ord(chaine[i]) <= 57:
+        compteur += 1
+    i += 1 
+resultat_ex8 = compteur
+
 
 
 # ========================================================
