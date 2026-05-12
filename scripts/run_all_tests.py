@@ -29,11 +29,17 @@ def run_tests():
     total_passed = 0
     total_failed = 0
     
-    # Parcourir chaque élève
-    for student_dir in sorted(eleves_dir.iterdir()):
-        if not student_dir.is_dir():
-            continue
-        
+    # Parcourir chaque élève (supporte eleves/web1/alice/ ET eleves/alice/)
+    def iter_students(base):
+        for entry in sorted(base.iterdir()):
+            if not entry.is_dir() or entry.name.startswith('.'):
+                continue
+            if list(entry.glob("tp*.py")):
+                yield entry
+            else:
+                yield from iter_students(entry)
+
+    for student_dir in iter_students(eleves_dir):
         student_name = student_dir.name
         print(f"\n👤 {student_name}")
         
